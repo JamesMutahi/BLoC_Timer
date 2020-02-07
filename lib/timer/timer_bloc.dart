@@ -15,6 +15,12 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
   @override
   TimerState get initialState => Ready(_duration);
 
+  @override
+  void onTransition(Transition<TimerEvent, TimerState> transition) {
+    super.onTransition(transition);
+    print(transition);
+  }
+
   Stream <TimerState> mapEventToState(TimerEvent event) async* {
     // TODO: implement map event to state
     if (event is Start) {
@@ -25,6 +31,9 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
     }
     else if (event is Resume) {
       yield* _mapResumeToState(event);
+    }  
+    else if (event is Reset) {
+      yield* _mapResetToState(event);
     }
     else if (event is Tick) {
       yield* _mapTickToState(event);
@@ -55,6 +64,11 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
       _tickerSubscription?.resume();
       yield Runing(state.duration);
     }
+  }
+
+  Stream<TimerState> _mapResetToState(Reset reset) async* {
+    _tickerSubscription?.cancel();
+    yield Ready(_duration);
   }
 
   Stream<TimerState> _mapTickToState(Tick tick) async* {
