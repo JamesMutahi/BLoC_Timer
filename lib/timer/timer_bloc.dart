@@ -20,6 +20,9 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
     if (event is Start) {
       yield* _mapStartToState(event);
     }
+    else if (event is Tick) {
+      yield* _mapTickToState(event);
+    }
   }
 
   @override
