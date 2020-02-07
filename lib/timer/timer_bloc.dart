@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:bloc_timer/ticker.dart';
 import 'package:bloc_timer/timer/index.dart';
 import 'package:flutter/cupertino.dart';
