@@ -19,7 +19,7 @@ class Start extends TimerEvent {
 
 class Pause extends TimerEvent {}
 
-class Running extends TimerEvent {}
+class Resume extends TimerEvent {}
 
 class Reset extends TimerEvent {}
 
