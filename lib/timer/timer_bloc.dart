@@ -22,7 +22,6 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
   }
 
   Stream <TimerState> mapEventToState(TimerEvent event) async* {
-    // TODO: implement map event to state
     if (event is Start) {
       yield* _mapStartToState(event);
     }
@@ -59,7 +58,7 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
     }
   }
 
-  Stream<TimerState> _mapResumeToState(Resume Resume) async* {
+  Stream<TimerState> _mapResumeToState(Resume resume) async* {
     if(state is Paused) {
       _tickerSubscription?.resume();
       yield Runing(state.duration);
@@ -74,7 +73,4 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
   Stream<TimerState> _mapTickToState(Tick tick) async* {
     yield tick.duration > 0 ? Runing(tick.duration) : Finished();
   }
-
-  
- 
 }
