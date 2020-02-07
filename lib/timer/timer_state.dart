@@ -23,13 +23,13 @@ class Paused extends TimerState{
   String toString() => 'Ready {duration: $duration}';
 }
 
-class Resume extends TimerState {
-  const Resume (int duration) : super(duration);
+class Runing extends TimerState {
+  const Runing (int duration) : super(duration);
 
   @override
   String toString() => 'Ready {duration: $duration}';
 }
 
 class Finished extends TimerState {
-  const Finished (int duration) : super(0);
+  const Finished () : super(0);
 }
