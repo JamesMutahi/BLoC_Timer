@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           theme: theme,
           home: BlocProvider(create: (_) => TimerBloc(ticker: Ticker()),
-          child: Timer(),
+          child: TimerPage(),
           ),
           );
       }
