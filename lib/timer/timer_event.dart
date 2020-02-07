@@ -17,3 +17,20 @@ class Start extends TimerEvent {
   String toString() => "Start {duration : $duration }";
 }
 
+class Pause extends TimerEvent {}
+
+class Running extends TimerEvent {}
+
+class Reset extends TimerEvent {}
+
+class Tick extends TimerEvent {
+  final int duration;
+
+  const Tick({@required this.duration});
+
+  @override
+  List <Object> get props => [duration];
+
+  @override
+  String toString() => "Tick {duration: $duration}";
+}
