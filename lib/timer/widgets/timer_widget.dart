@@ -1,6 +1,7 @@
 import 'package:bloc_timer/timer/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:bloc_timer/timer/widgets/actions_widget.dart';
 
 class Timer extends StatelessWidget {
   static const TextStyle timerTextStyle = TextStyle(
@@ -34,6 +35,11 @@ class Timer extends StatelessWidget {
                 },
               ),
             ),
+          ),
+          BlocBuilder<TimerBloc, TimerState>(
+            condition: (previousState, state) =>
+                state.runtimeType != previousState.runtimeType,
+            builder: (context, state) => Actions(),
           ),
         ],
       ),

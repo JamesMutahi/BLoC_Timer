@@ -17,7 +17,12 @@ class MyApp extends StatelessWidget {
     child: BlocBuilder<ThemeBloc, ThemeData>(
       builder: (_, theme) {
         return MaterialApp(
-          theme: theme,
+          // theme: theme,
+          theme: theme.copyWith(
+            primaryColor: Color.fromRGBO(109, 234, 255, 1),
+            accentColor: Color.fromRGBO(72, 74, 126, 1),
+            brightness: Brightness.dark,
+          ),
           home: BlocProvider(create: (_) => TimerBloc(ticker: Ticker()),
           child: TimerPage(),
           ),
